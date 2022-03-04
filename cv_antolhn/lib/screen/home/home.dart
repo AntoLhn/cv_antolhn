@@ -1,0 +1,93 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../config/colors.dart';
+import 'components/developer.dart';
+import 'components/header.dart';
+import 'components/stud_and_work.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: IconButton(
+                onPressed: (() => null),
+                color: colorDark,
+                icon: const Icon(
+                  Icons.menu,
+                  size: 32,
+                ),
+              ),
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Stack(
+            children: <Widget>[
+              Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.4,
+                  ),
+                  SvgPicture.asset(
+                    'assets/svg/top_home_bg.svg',
+                    semanticsLabel: 'background',
+                    color: colorPrimary,
+                    fit: BoxFit.fitWidth,
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 700,
+                    color: colorPrimary,
+                  ),
+                  SvgPicture.asset(
+                    'assets/svg/bot_home_bg.svg',
+                    semanticsLabel: 'background',
+                    color: colorPrimary,
+                    fit: BoxFit.fitWidth,
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                ),
+                child: Column(
+                  children: [
+                    const HeaderCompenent(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.13,
+                    ),
+                    const DeveloperComponent(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                    ),
+                    const StudAndWorkComponent(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
