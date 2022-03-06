@@ -1,8 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../config/colors.dart';
 import 'components/developer.dart';
+import 'components/drawer.dart';
 import 'components/header.dart';
 import 'components/stud_and_work.dart';
 
@@ -21,22 +23,15 @@ class _HomePageState extends State<HomePage> {
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          iconTheme: IconThemeData(
+            color: colorDark,
+            size: 36,
+          ),
+          backgroundColor: const Color.fromARGB(0, 255, 255, 255),
           elevation: 0,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: IconButton(
-                onPressed: (() => null),
-                color: colorDark,
-                icon: const Icon(
-                  Icons.menu,
-                  size: 32,
-                ),
-              ),
-            ),
-          ],
         ),
+        endDrawer: const DrawerComponent(),
+        drawerEdgeDragWidth: 30,
         body: SingleChildScrollView(
           child: Stack(
             children: <Widget>[
@@ -66,23 +61,34 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 32,
-                ),
-                child: Column(
-                  children: [
-                    const HeaderCompenent(),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.13,
-                    ),
-                    const DeveloperComponent(),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                    ),
-                    const StudAndWorkComponent(),
-                  ],
-                ),
+              Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 32),
+                    child: HeaderCompenent(),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.13,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 32),
+                    child: DeveloperComponent(),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 32),
+                    child: StudAndWorkComponent(),
+                  ),
+                  SvgPicture.asset(
+                    'assets/svg/bot_home.svg',
+                    semanticsLabel: 'background',
+                    color: colorPrimary,
+                    fit: BoxFit.fitWidth,
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                ],
               ),
             ],
           ),

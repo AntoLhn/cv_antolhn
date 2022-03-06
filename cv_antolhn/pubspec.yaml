@@ -65,6 +65,8 @@ flutter:
       - assets/svg/home_bg.svg
       - assets/svg/top_home_bg.svg
       - assets/svg/bot_home_bg.svg
+      - assets/svg/bot_home.svg
+      - assets/svg/menu_bg.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
