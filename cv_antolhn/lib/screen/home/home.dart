@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../config/colors.dart';
 import 'components/developer.dart';
-import 'components/drawer.dart';
+import '../drawer.dart';
 import 'components/header.dart';
 import 'components/stud_and_work.dart';
 
